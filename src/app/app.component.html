@@ -1,0 +1,118 @@
+
+<div class="dx-card"><!--style="height: 100vh;"-->
+    <div class="content-block">
+      <div class="long-title">
+        <h3>Sparc Request</h3>
+      </div>
+    <div class="dx-field">
+     <div class="dx-field-label">Employee No<label style="color: red;">*</label></div>
+    <div class="dx-field-value">
+     <dx-text-box #employeeNo          
+     >
+      </dx-text-box>
+      </div>
+  </div>
+
+    <div class="dx-field">
+    <div class="dx-field-label">Currency<label style="color: red;">*</label></div>
+      <div class="dx-field-value">
+          <dx-select-box    
+          [items]="Currency" #currency
+          [showClearButton]="true"> 
+         </dx-select-box>
+      </div>            
+    </div>
+
+    <div class="dx-field">
+   <div class="dx-field-label">Amount<label style="color: red;">*</label></div>
+    <div class="dx-field-value">
+     <dx-text-box #amount          
+     >
+      </dx-text-box>
+      </div>
+  </div>
+
+  <div class="dx-field">
+    <div class="dx-field-label">Award Type<label style="color: red;">*</label></div>
+      <div class="dx-field-value">
+          <dx-select-box    
+          [items]="AwardType" #awardType
+          [showClearButton]="true"> 
+         </dx-select-box>
+      </div>            
+    </div>
+
+    <div class="dx-field">
+   <div class="dx-field-label">Description, Duration and Impact of effort<label style="color: red;">*</label></div>
+    <div class="dx-field-value">
+     <dx-text-area #Description
+     >
+     </dx-text-area>
+      </div>
+  </div>
+
+  <div class="dx-field">
+   <div class="dx-field-label">Comments<label style="color: red;">*</label></div>
+    <div class="dx-field-value">
+     <dx-text-area #Comments>
+      </dx-text-area>
+     </div>
+  </div>
+<div class="dx-field">
+   <div class="dx-field-label">Process Month<label style="color: red;">*</label></div>
+    <div class="dx-field-value">
+     <dx-calendar #Process Month
+        [(value)]="date">
+    </dx-calendar>
+     </div>
+  </div>
+<!-- <div class="dx-field">
+   <div class="dx-field-label">Upload Supporting Doc	<label style="color: red;">*</label></div>
+    <div class="dx-field-value">    
+     </div>
+  </div> -->
+  
+</div>
+ <div class="dx-fieldset">                    
+   <dx-button 
+        color="primary" 
+        class="button"
+        text="Add Sparc"
+        type="success"  
+        [useSubmitBehavior]="true"
+        (click)="AddSparc($event)">
+   </dx-button>
+</div>
+
+
+<div>
+        <dx-data-grid
+            id="gridContainer"
+            [dataSource]="dataSource"            
+            [showBorders]="true" >
+                <dxo-paging [enabled]="true"></dxo-paging>
+                <dxo-editing 
+                mode="row"
+                [allowUpdating]="true"
+                [allowDeleting]="true">
+                </dxo-editing>
+                <dxi-column dataField="EmployeeNo"caption="EmployeeNo"></dxi-column>
+            <dxi-column dataField="Currency" caption="Currency">
+                <dxo-lookup 
+                [dataSource]="Currency">
+            </dxo-lookup>
+            </dxi-column>
+            <dxi-column dataField="Amount" caption="Amount"></dxi-column>
+                        <dxi-column dataField="AwardType" caption="AwardType">
+                <dxo-lookup 
+                [dataSource]="AwardType">
+            </dxo-lookup>
+            </dxi-column>
+            <dxi-column dataField="FileName" caption="FileName"></dxi-column>
+        </dx-data-grid>
+        <div>
+                <button mat-raised-button color="primary" class="button">Submit</button>                
+        </div>
+    </div>
+
+</div>
